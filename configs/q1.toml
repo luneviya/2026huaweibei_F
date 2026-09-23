@@ -1,0 +1,45 @@
+[experiment]
+name = "q1_four_scheme_benchmark"
+seed = 20260923
+cv_folds = 5
+cv_repeats = 10
+bootstrap_repeats = 1000
+
+[data]
+root_env = "HUAWEI_F_DATA_ROOT"
+regmix_subdir = "A_data_value/regmix_tables"
+train_mixture = "train_mixture_1m.csv"
+train_loss = "train_pile_loss_1m.csv"
+holdout_mixture = "test_mixture_1m.csv"
+holdout_loss = "test_pile_loss_1m.csv"
+
+[selection]
+primary_metric = "mean_standardized_rmse"
+one_standard_error_rule = true
+top_k_fraction = 0.10
+tie_breakers = [
+  "top_k_regret_asc",
+  "mean_spearman_desc",
+  "q_bootstrap_stability_desc",
+  "complexity_asc",
+]
+
+[schemes.s1]
+name = "critic_sparse_scheffe"
+quality_model = "critic_robust"
+loss_model = "sparse_quadratic_scheffe"
+
+[schemes.s2]
+name = "latent_ilr_elasticnet"
+quality_model = "robust_latent"
+loss_model = "ilr_multitask_elasticnet"
+
+[schemes.s3]
+name = "rank_xgboost"
+quality_model = "robust_rank_aggregation"
+loss_model = "xgboost_multioutput"
+
+[schemes.s4]
+name = "bayesian_hierarchical"
+quality_model = "bayesian_hierarchical_quality"
+loss_model = "bayesian_mixture_regression"
