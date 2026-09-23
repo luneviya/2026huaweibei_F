@@ -1,0 +1,9 @@
+{
+  "seed": 20260923,
+  "outer_folds": 5,
+  "outer_repeats": 2,
+  "inner_folds": 3,
+  "bootstrap_repetitions": 200,
+  "feature_dropout_repetitions": 10,
+  "top_k_fraction": 0.1
+}

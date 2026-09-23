@@ -23,6 +23,17 @@ class MultiOutputMetrics:
         return float(np.nanmean(self.spearman))
 
 
+def spearman_value(x: np.ndarray, y: np.ndarray) -> float:
+    """Return Spearman's rho across old and new SciPy result APIs."""
+
+    result = spearmanr(x, y)
+    if hasattr(result, "statistic"):
+        return float(result.statistic)
+    if hasattr(result, "correlation"):
+        return float(result.correlation)
+    return float(result[0])
+
+
 def multioutput_metrics(
     y_true: np.ndarray,
     y_pred: np.ndarray,
@@ -43,7 +54,7 @@ def multioutput_metrics(
     rmse = np.sqrt(np.mean(error**2, axis=0)) / scale
     mae = np.mean(np.abs(error), axis=0) / scale
     rank_correlation = np.array(
-        [spearmanr(observed[:, j], predicted[:, j]).statistic for j in range(observed.shape[1])]
+        [spearman_value(observed[:, j], predicted[:, j]) for j in range(observed.shape[1])]
     )
     return MultiOutputMetrics(rmse, mae, rank_correlation)
 

@@ -11,6 +11,7 @@ htmlcov/
 # Environments and local settings
 .venv/
 venv/
+.deps/
 .env
 .python-version
 

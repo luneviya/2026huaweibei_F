@@ -1,0 +1,58 @@
+{
+  "winner": "S3",
+  "parameters": {
+    "n_estimators": 300,
+    "max_depth": 3,
+    "learning_rate": 0.03
+  },
+  "holdout_metrics": {
+    "mean_standardized_rmse": 0.13509905357588828,
+    "mean_standardized_mae": 0.09393109876685844,
+    "mean_spearman": 0.9888196806128904,
+    "top_k_regret": 0.0,
+    "worst_task_standardized_rmse": 0.19183605748443922
+  },
+  "settings": {
+    "seed": 20260923,
+    "outer_folds": 5,
+    "outer_repeats": 2,
+    "inner_folds": 3,
+    "bootstrap_repetitions": 200,
+    "feature_dropout_repetitions": 10,
+    "top_k_fraction": 0.1
+  },
+  "mixture_columns": [
+    "train_the_pile_arxiv",
+    "train_the_pile_freelaw",
+    "train_the_pile_nih_exporter",
+    "train_the_pile_pubmed_central",
+    "train_the_pile_wikipedia_en",
+    "train_the_pile_dm_mathematics",
+    "train_the_pile_github",
+    "train_the_pile_philpapers",
+    "train_the_pile_stackexchange",
+    "train_the_pile_enron_emails",
+    "train_the_pile_gutenberg_pg_19",
+    "train_the_pile_pile_cc",
+    "train_the_pile_ubuntu_irc",
+    "train_the_pile_europarl",
+    "train_the_pile_hackernews",
+    "train_the_pile_pubmed_abstracts",
+    "train_the_pile_uspto_backgrounds"
+  ],
+  "loss_columns": [
+    "metric/the_pile_arxiv_val_loss",
+    "metric/the_pile_freelaw_val_loss",
+    "metric/the_pile_pubmed_central_val_loss",
+    "metric/the_pile_wikipedia_en_val_loss",
+    "metric/the_pile_dm_mathematics_val_loss",
+    "metric/the_pile_github_val_loss",
+    "metric/the_pile_stackexchange_val_loss",
+    "metric/the_pile_gutenberg_pg_19_val_loss",
+    "metric/the_pile_pile_cc_val_loss",
+    "metric/the_pile_ubuntu_irc_val_loss",
+    "metric/the_pile_hackernews_val_loss",
+    "metric/the_pile_pubmed_abstracts_val_loss",
+    "metric/the_pile_uspto_backgrounds_val_loss"
+  ]
+}

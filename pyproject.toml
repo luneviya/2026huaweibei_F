@@ -7,26 +7,22 @@ name = "huawei-f"
 version = "0.1.0"
 description = "Reproducible experiments for the 2026 Huawei Cup Problem F"
 readme = "README.md"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.9,<3.14"
 dependencies = [
-  "numpy>=1.26,<3",
-  "pandas>=2.2,<3",
-  "scipy>=1.13,<2",
-  "scikit-learn>=1.5,<2",
-  "statsmodels>=0.14,<1",
-  "matplotlib>=3.9,<4",
-  "seaborn>=0.13,<1",
+  "numpy>=1.23,<3",
+  "pandas>=2.0,<3",
+  "scipy>=1.9,<2",
+  "scikit-learn>=1.0,<2",
+  "statsmodels>=0.13,<1",
+  "matplotlib>=3.5,<4",
+  "seaborn>=0.11,<1",
+  "tomli>=2; python_version < '3.11'",
 ]
 
 [project.optional-dependencies]
 nonlinear = ["xgboost>=2.1,<4"]
-bayes = ["pymc>=5.16,<6", "arviz>=0.19,<1"]
 dev = ["pytest>=8,<10", "pytest-cov>=5,<8", "ruff>=0.6,<1"]
-all = [
-  "xgboost>=2.1,<4",
-  "pymc>=5.16,<6",
-  "arviz>=0.19,<1",
-]
+all = ["xgboost>=2.1,<4"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -37,4 +33,4 @@ addopts = "-q"
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py39"

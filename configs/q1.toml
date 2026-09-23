@@ -2,8 +2,8 @@
 name = "q1_four_scheme_benchmark"
 seed = 20260923
 cv_folds = 5
-cv_repeats = 10
-bootstrap_repeats = 1000
+cv_repeats = 2
+bootstrap_repeats = 200
 
 [data]
 root_env = "HUAWEI_F_DATA_ROOT"

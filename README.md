@@ -28,7 +28,7 @@ reports/tables/          论文表格输出位置
 
 ## 本地准备
 
-建议使用 Python 3.12。Windows PowerShell 示例：
+支持Python 3.9—3.13。若需严格复现实次正式结果，请使用Python 3.9.13与`requirements-lock-experiment.txt`；日常开发可使用Python 3.12。Windows PowerShell示例：
 
 ```powershell
 py -3.12 -m venv .venv
@@ -45,6 +45,16 @@ python scripts/run_q1_benchmark.py --list-schemes
 python scripts/run_q1_benchmark.py --validate-data
 pytest
 ```
+
+运行四方案嵌套交叉验证并选择唯一冠军：
+
+```powershell
+python scripts/run_q1_full_experiment.py
+```
+
+完整运行依次生成质量评分稳定性、嵌套交叉验证、唯一冠军、A6/A7独立验证、60M/1B排序迁移以及可复用的冻结模型文件。
+
+本次正式实验已经选定并冻结S3，参数见 [`configs/q1_winner.toml`](configs/q1_winner.toml)，选择证据见 [`docs/q1_winner_decision.md`](docs/q1_winner_decision.md)，完整轻量结果见 [`results/q1/`](results/q1/)。
 
 ## 实验原则
 

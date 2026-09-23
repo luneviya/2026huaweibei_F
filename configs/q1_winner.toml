@@ -1,0 +1,66 @@
+[decision]
+status = "frozen"
+winner = "S3"
+selected_at = "2026-09-23"
+seed = 20260923
+selection_metric = "nested_cv_mean_standardized_rmse"
+selection_rule = "one_standard_error_then_regret_rank_stability_complexity"
+
+[quality]
+model = "robust_rank_aggregation"
+trim_fraction = 0.10
+list_signal_compression = "softmax_expected_ordinal_score"
+normalization = "training_sample_empirical_quantile"
+positive_direction = [
+  "fineweb_edu",
+  "fluency_en",
+  "modernbert_cleanliness",
+  "modernbert_readability",
+  "modernbert_reasoning",
+  "modernbert_professionalism",
+  "dsir_books",
+  "dsir_wiki",
+  "dsir_math",
+  "qurater",
+  "rps_doc_frac_unique_words",
+  "rps_lines_ending_with_terminal_punctution_mark",
+]
+negative_direction = [
+  "ad_en",
+  "rps_doc_frac_no_alph_words",
+  "rps_doc_frac_chars_top_2gram",
+  "rps_doc_frac_chars_top_3gram",
+  "rps_lines_uppercase_letter_fraction",
+]
+central_preference = [
+  "rps_doc_word_count",
+  "rps_doc_num_sentences",
+  "rps_doc_unigram_entropy",
+  "rps_lines_numerical_chars_fraction",
+  "rps_doc_mean_word_length",
+]
+
+[loss_model]
+model = "xgboost_multioutput"
+input = "17 renormalized mixture proportions"
+outputs = 13
+n_estimators = 300
+max_depth = 3
+learning_rate = 0.03
+min_child_weight = 3.0
+subsample = 0.85
+colsample_bytree = 0.85
+reg_lambda = 5.0
+objective = "reg:squarederror"
+
+[validation]
+outer_folds = 5
+outer_repeats = 2
+inner_folds = 3
+cv_mean_standardized_rmse = 0.168615
+cv_standard_error = 0.005236
+cv_mean_spearman = 0.985601
+holdout_mean_standardized_rmse = 0.135099
+holdout_mean_spearman = 0.988820
+holdout_top_k_regret = 0.0
+quality_stability = 0.980357
